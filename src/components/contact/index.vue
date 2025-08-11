@@ -45,18 +45,28 @@
             ></textarea>
           </div>
   
-<!--   
+   
           <div class="mb-3">
               <h5>Want more spam ? </h5>
               <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="Newsletter" id="newsletter"
+                  <input 
+                    class="form-check-input" 
+                    type="checkbox" 
+                    value="Newsletter" 
+                    id="newsletter"
+                    v-model="formData.extras"
                   >
                   <label class="form-check-label" for="newsletter">
                       Newsletter
                   </label>
               </div>
               <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="Promotions" id="promotions"
+                  <input 
+                    class="form-check-input" 
+                    type="checkbox"
+                    value="Promotions" 
+                    id="promotions"
+                    v-model="formData.extras"
                   >
                   <label class="form-check-label" for="newsletter">
                       Promotions
@@ -67,20 +77,20 @@
            <div class="mb-3">
               <h5>What are you ? </h5>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" id="human" value="human" name="origin"
+                  <input class="form-check-input" type="radio" id="human" value="human" name="gender" v-model="formData.gender"
                   >
                   <label class="form-check-label" for="human">
                       Human
                   </label>
               </div>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" id="alien" value="alien" name="origin"
+                  <input class="form-check-input" type="radio" id="alien" value="alien" name="gender" v-model="formData.gender"
                   >
                   <label class="form-check-label" for="alien">
                       Alien
                   </label>
               </div>
-          </div> -->
+          </div>
             
             <button
                 class="btn btn-primary"
@@ -103,7 +113,9 @@
     name:'Francis',
     email:'',
     subject:'',
-    message:''
+    message:'',
+    extras:[],
+    gender:'alien'
   })
 
   const submitForm = () => {
