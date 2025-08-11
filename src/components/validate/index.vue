@@ -1,10 +1,9 @@
 <template>
-  <Form @submit="onSubmit">
+  <Form @submit="onSubmit" :validation-schema="formSchema">
     <div class="mb-3">
       <label for="name">Name</label>
       <Field 
         name="name" 
-        :rules="[isRequired,validateName]"
         placeholder="Enter your name"
         class="form-control"
       />
@@ -23,6 +22,12 @@
 
 <script setup>
   import { Field, Form, ErrorMessage } from 'vee-validate';
+  import * as yup from 'yup'
+
+  const formSchema = yup.object({
+    name:yup.string().required('The name is required')
+    .max(5,'Sorry a max of 5')
+  })
 
   const isRequired = (value) => {
     if(!value) { return 'The field is required' }
