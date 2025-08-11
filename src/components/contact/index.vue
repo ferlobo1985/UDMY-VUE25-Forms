@@ -11,6 +11,7 @@
               type="text"
               id="name"
               class="form-control"
+              v-model.lazy.trim="formData.name"
             />
           </div>
       
@@ -20,6 +21,7 @@
               type="email"
               id="email"
               class="form-control"
+               v-model="formData.email"
             />
           </div>
   
@@ -29,6 +31,7 @@
               type="text"
               id="subject"
               class="form-control"
+              v-model="formData.subject"
             />
           </div>
   
@@ -38,10 +41,11 @@
               class="form-control"
               rows="3"
               id="message"
+              v-model="formData.message"
             ></textarea>
           </div>
   
-  
+<!--   
           <div class="mb-3">
               <h5>Want more spam ? </h5>
               <div class="form-check">
@@ -76,10 +80,11 @@
                       Alien
                   </label>
               </div>
-          </div>
+          </div> -->
             
             <button
                 class="btn btn-primary"
+                @click.prevent="submitForm"
             >
             Submit
             </button>
@@ -92,5 +97,17 @@
 
 
 <script setup>
+  import { reactive } from 'vue';
+
+  const formData = reactive({
+    name:'Francis',
+    email:'',
+    subject:'',
+    message:''
+  })
+
+  const submitForm = () => {
+    console.log(JSON.stringify(formData))
+  }
 
 </script>
